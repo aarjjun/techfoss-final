@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Cards</title>
+    <style>
+        .event-section {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .scroll-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+        }
+        .scroll-left { left: 0; }
+        .scroll-right { right: 0; }
+        .event-cards {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .event-card {
+            flex: 0 0 auto;
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .event-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="event-section">
+    <button class="scroll-btn scroll-left" onclick="scrollLeft()">&#9665;</button>
+    <div class="event-cards" id="eventContainer">
+        <div class="event-card">
+            <img src="image1.jpg" alt="Gaming Room">
+            <h3>GAMING ROOM</h3>
+        </div>
+        <div class="event-card">
+            <img src="image2.jpg" alt="Pictionary">
+            <h3>PICTIONARY</h3>
+        </div>
+        <div class="event-card">
+            <img src="image3.jpg" alt="Quiz Competition">
+            <h3>QUIZ COMPETITION</h3>
+        </div>
+        <div class="event-card">
+            <img src="image4.jpg" alt="Tech Talk">
+            <h3>TECH TALK</h3>
+        </div>
+        <div class="event-card">
+            <img src="image4.jpg" alt="Tech Talk">
+            <h3>TECH TALK</h3>
+        </div>
+        <div class="event-card">
+            <img src="image4.jpg" alt="Tech Talk">
+            <h3>TECH TALK</h3>
+        </div>
+        <div class="event-card">
+            <img src="image4.jpg" alt="Tech Talk">
+            <h3>TECH TALK</h3>
+        </div>
+        <div class="event-card">
+            <img src="image4.jpg" alt="Tech Talk">
+            <h3>TECH TALK</h3>
+        </div>
+        <div class="event-card">
+            <img src="image4.jpg" alt="Tech Talk">
+            <h3>TECH TALK</h3>
+        </div>
+        
+    </div>
+    <button class="scroll-btn scroll-right" onclick="scrollRight()">&#9655;</button>
+</div>
+
+<script>
+    function scrollLeft() {
+        document.getElementById('eventContainer').scrollBy({ left: -300, behavior: 'smooth' });
+    }
+    function scrollRight() {
+        document.getElementById('eventContainer').scrollBy({ left: 300, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
