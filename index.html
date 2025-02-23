@@ -587,7 +587,7 @@
 
 
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.event-cards').forEach(container => {
     const cards = container.querySelectorAll('.event-card');
     const scrollLeftBtn = container.querySelector('.scroll-left');
@@ -631,8 +631,8 @@
       });
     });
 
-    // Align horizontally when hovered, including touch devices
-    const alignHorizontally = () => {
+    // Align horizontally when hovered
+    container.addEventListener('mouseenter', function () {
       cards.forEach((card, index) => {
         gsap.to(card, {
           x: index * 300, // Increased horizontal spacing
@@ -642,9 +642,9 @@
           ease: 'power3.inOut'
         });
       });
-    };
+    });
 
-    const stackBack = () => {
+    container.addEventListener('mouseleave', function () {
       cards.forEach((card, index) => {
         gsap.to(card, {
           x: index * 5,
@@ -654,14 +654,7 @@
           ease: 'power3.inOut'
         });
       });
-    };
-
-    container.addEventListener('mouseenter', alignHorizontally);
-    container.addEventListener('mouseleave', stackBack);
-
-    // For mobile devices, mimic hover with touch events
-    container.addEventListener('touchstart', alignHorizontally);
-    container.addEventListener('touchend', stackBack);
+    });
 
     // Scroll buttons functionality remains intact
     if (scrollLeftBtn && scrollRightBtn) {
@@ -695,7 +688,6 @@
     });
   });
 });
-
       </script>
         
     </section>
