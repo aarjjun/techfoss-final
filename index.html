@@ -631,14 +631,14 @@
       });
     });
 
-    // Align horizontally when hovered or touched
+    // Align horizontally when hovered, including touch devices
     const alignHorizontally = () => {
       cards.forEach((card, index) => {
         gsap.to(card, {
           x: index * 300, // Increased horizontal spacing
           y: 0,
           rotation: 0,
-          duration: 0.5, // Shortened duration for better performance
+          duration: 0.8,
           ease: 'power3.inOut'
         });
       });
@@ -650,7 +650,7 @@
           x: index * 5,
           y: index * 5,
           rotation: 0,
-          duration: 0.5, // Shortened duration for better performance
+          duration: 0.8,
           ease: 'power3.inOut'
         });
       });
@@ -660,15 +660,8 @@
     container.addEventListener('mouseleave', stackBack);
 
     // For mobile devices, mimic hover with touch events
-    container.addEventListener('touchstart', (e) => {
-      e.preventDefault(); // Prevent scroll interruption
-      alignHorizontally();
-    });
-
-    container.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      stackBack();
-    });
+    container.addEventListener('touchstart', alignHorizontally);
+    container.addEventListener('touchend', stackBack);
 
     // Scroll buttons functionality remains intact
     if (scrollLeftBtn && scrollRightBtn) {
@@ -702,7 +695,8 @@
     });
   });
 });
-</script>
+
+      </script>
         
     </section>
 
