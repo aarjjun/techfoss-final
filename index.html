@@ -631,29 +631,43 @@
       });
     });
 
-    // Align horizontally when hovered
-    container.addEventListener('mouseenter', function () {
+    // Align horizontally when hovered or touched
+    const alignHorizontally = () => {
       cards.forEach((card, index) => {
         gsap.to(card, {
           x: index * 300, // Increased horizontal spacing
           y: 0,
           rotation: 0,
-          duration: 0.8,
+          duration: 0.5, // Shortened duration for better performance
           ease: 'power3.inOut'
         });
       });
-    });
+    };
 
-    container.addEventListener('mouseleave', function () {
+    const stackBack = () => {
       cards.forEach((card, index) => {
         gsap.to(card, {
           x: index * 5,
           y: index * 5,
           rotation: 0,
-          duration: 0.8,
+          duration: 0.5, // Shortened duration for better performance
           ease: 'power3.inOut'
         });
       });
+    };
+
+    container.addEventListener('mouseenter', alignHorizontally);
+    container.addEventListener('mouseleave', stackBack);
+
+    // For mobile devices, mimic hover with touch events
+    container.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // Prevent scroll interruption
+      alignHorizontally();
+    });
+
+    container.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      stackBack();
     });
 
     // Scroll buttons functionality remains intact
@@ -688,8 +702,7 @@
     });
   });
 });
-
-      </script>
+</script>
         
     </section>
 
