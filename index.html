@@ -226,15 +226,15 @@
         gap: 2rem;
         background-color: #ee6633;
         border-radius: 18px;
-        padding: 2rem;
+        padding: 22rem;
         padding-bottom: 4rem;
         overflow-x: auto;
-        scroll-behavior: smooth;
+        scromargin-top: 0.5rem;
+        ll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
         position: relative;
-        margin-top: 0.5rem;
         margin-bottom: 2.5rem;
         }
 
@@ -588,44 +588,101 @@
 
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-          const container = document.querySelector('.event-cards');
-          const scrollLeftBtn = document.querySelector('.scroll-left');
-          const scrollRightBtn = document.querySelector('.scroll-right');
-          const scrollAmount = 400;
-          
+  document.querySelectorAll('.event-cards').forEach(container => {
+    const cards = container.querySelectorAll('.event-card');
+    const scrollLeftBtn = container.querySelector('.scroll-left');
+    const scrollRightBtn = container.querySelector('.scroll-right');
+    const scrollAmount = 400;
 
-          scrollLeftBtn.addEventListener('click', () => {
-            container.scrollBy({
-              left: -scrollAmount,
-              behavior: 'smooth'
+    // Ensure the container is relatively positioned so that the absolute positioning works
+    container.style.position = 'relative';
+    container.style.display = 'flex'; // Ensure horizontal alignment
+    container.style.gap = '20px'; // Add some spacing between stacks
+
+    // Initially stack all cards on top of each other with slight offset to show stack
+    cards.forEach((card, index) => {
+      card.style.position = 'absolute';
+      card.style.top = `${index * 5}px`; // Slight vertical offset to show stack
+      card.style.left = `${index * 5}px`; // Slight horizontal offset to show stack
+      card.style.zIndex = cards.length - index;
+    });
+
+    let isFanned = false;
+
+    // On click, fan out cards to show stack and allow individual card clicks
+    cards.forEach((card, index) => {
+      card.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent container click event from firing
+
+        if (!isFanned) {
+          cards.forEach((card, idx) => {
+            gsap.to(card, {
+              x: idx * 50,
+              y: idx * 30,
+              rotation: idx * 5,
+              duration: 0.8,
+              ease: 'power3.out'
             });
           });
+          isFanned = true;
+        } else {
+          console.log(`Card ${index + 1} clicked`); // Placeholder for individual card action
+        }
+      });
+    });
 
-            document.querySelectorAll('.event-cards').forEach(container => {
-            container.addEventListener('wheel', (e) => {
-              e.preventDefault();
-              container.scrollLeft += e.deltaY;
-            });
-
-            // Add mouseenter/mouseleave events
-            container.addEventListener('mouseenter', () => {
-              disableScroll();
-            });
-            
-            container.addEventListener('mouseleave', () => {
-              enableScroll(); 
-            });
-            });
-
-
-          scrollRightBtn.addEventListener('click', () => {
-            container.scrollBy({
-              left: scrollAmount,
-              behavior: 'smooth'
-            });
+    // On container click, align horizontally with wider spacing
+    container.addEventListener('click', function () {
+      if (isFanned) {
+        cards.forEach((card, index) => {
+          gsap.to(card, {
+            x: index * 300, // Increased horizontal spacing
+            y: 0,
+            rotation: 0,
+            duration: 0.8,
+            ease: 'power3.inOut'
           });
         });
-      </script>
+        isFanned = false;
+      }
+    });
+
+    // Scroll buttons functionality remains intact
+    if (scrollLeftBtn && scrollRightBtn) {
+      scrollLeftBtn.addEventListener('click', () => {
+        container.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+
+      scrollRightBtn.addEventListener('click', () => {
+        container.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Enable horizontal scrolling with the mouse wheel, and disable/enable scrolling on hover
+    container.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      container.scrollLeft += e.deltaY;
+    });
+
+    container.addEventListener('mouseenter', () => {
+      disableScroll();
+    });
+
+    container.addEventListener('mouseleave', () => {
+      enableScroll();
+    });
+  });
+});
+
+
+        </script>
+        
     </section>
 
     <!-- Memeories section -->
