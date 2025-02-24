@@ -366,6 +366,10 @@
           align-items: center;
           justify-content: center;
           text-align: center;
+          word-break: break-word;
+          white-space: normal;
+          overflow-wrap: break-word;
+          text-align: center;
         }
 
         .event-image {
@@ -455,6 +459,24 @@
             /* Move title off-screen on hover */
           }
         }
+        /* Responsive font size */
+        .responsive-text {
+            font-size: 12px;
+            
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 720px) {
+            .responsive-text {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .responsive-text {
+                font-size: 8px;
+            }
+        }
       </style>
 
 
@@ -470,6 +492,7 @@
             </div>
             <div class="card-back">
               <h3>GAME DEVELOPMENT</h3>
+              
               <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMyDSWC144D9mgSvYaK7Ep3ClNeTA_0u8HkVbUTan8UGkhdg/viewform"
                 target="_blank">
                 <button class="register-btn">REGISTER</button>
@@ -521,6 +544,13 @@
             </div>
             <div class="card-back">
               <h3>CAPTURE THE FLAG - CODE DEBUGGING</h3>
+              <p class="responsive-text">
+                🚩 Capture The Flag 🚩<br><br>
+
+              Crack the code. <br>Capture the flag. Rule the game. <br>
+
+            🔥 Only the best survive. <br> Are you up for the challenge?
+              </p>
               <a href="https://forms.gle/Q8HV6wUBfPnEatkH7" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
@@ -535,11 +565,16 @@
                 alt="BINARY BOUNTY IMG" class="event-image" style="object-fit: none;">
               <div class="event-type">COMPETITION</div>
             </div>
-            <div class="card-back">
-              <h3>BINARY BOUNTY</h3>
+            <div class="card-back" style="overflow-wrap: break-word; word-wrap: break-word; ">
+                <h3>BINARY BOUNTY</h3>
+                <p class="responsive-text">⚠ Elite Only. ALECTRA Watches. ⚠ <br><br>
+                  💾 Hack or be hacked. <br>Time is running out.<br>
+                  Enter the grid. Claim the bounty.
+              </p>
               <a href="https://forms.gle/Q8HV6wUBfPnEatkH7" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
+              
             </div>
           </div>
         </div>
