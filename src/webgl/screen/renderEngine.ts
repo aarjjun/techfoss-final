@@ -13,7 +13,7 @@ import { Assists } from "../loader";
 
 
 const backgroundLoader = new THREE.TextureLoader();
-const backgroundTexture = backgroundLoader.load('/assets/TERMINAL_LOGO.png');
+const backgroundTexture = backgroundLoader.load('../../../assets/TERMINAL_LOGO.png');
 backgroundTexture.encoding = THREE.sRGBEncoding;
 export default function ScreenRenderEngine(
   assists: Assists,
