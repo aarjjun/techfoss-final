@@ -681,27 +681,24 @@
             const scrollLeftBtn = container.querySelector('.scroll-left');
             const scrollRightBtn = container.querySelector('.scroll-right');
             const scrollAmount = 400;
-
-            // Ensure the container is relatively positioned so that the absolute positioning works
+      
             container.style.position = 'relative';
-            container.style.display = 'flex'; // Ensure horizontal alignment
-            container.style.gap = window.innerWidth <= 480 ? '5px' : '20px'; // Smaller gap on mobile
-
-            // Initially stack all cards on top of each other with slight offset to show stack
+            container.style.display = 'flex';
+            container.style.gap = window.innerWidth <= 480 ? '5px' : '20px';
+      
             cards.forEach((card, index) => {
               card.style.position = 'absolute';
-              card.style.top = `${index * 5}px`; // Slight vertical offset to show stack
-              card.style.left = `${index * 5}px`; // Slight horizontal offset to show stack
+              card.style.top = `${index * 5}px`;
+              card.style.left = `${index * 5}px`;
               card.style.zIndex = cards.length - index;
             });
-
+      
             let isFanned = true;
-
-            // On click, fan out cards to show stack and allow individual card clicks
+      
             cards.forEach((card, index) => {
               card.addEventListener('click', function (event) {
-                event.stopPropagation(); // Prevent container click event from firing
-
+                event.stopPropagation();
+      
                 if (!isFanned) {
                   cards.forEach((card, idx) => {
                     gsap.to(card, {
@@ -714,19 +711,18 @@
                   });
                   isFanned = true;
                 } else {
-                  console.log(`Card ${index + 1} clicked`); // Placeholder for individual card action
+                  console.log(`Card ${index + 1} clicked`);
                 }
               });
             });
-
-            // Align horizontally when hovered
+      
             container.addEventListener('mouseenter', function () {
-              const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
-              const spacing = isMobile ? 250 : 300; // Reduce spacing for mobile screens
-
+              const isMobile = window.innerWidth <= 768;
+              const spacing = isMobile ? 250 : 300;
+      
               cards.forEach((card, index) => {
                 gsap.to(card, {
-                  x: index * spacing, // Adjusted spacing for mobile
+                  x: index * spacing,
                   y: 0,
                   rotation: 0,
                   duration: 0.8,
@@ -734,7 +730,7 @@
                 });
               });
             });
-
+      
             container.addEventListener('mouseleave', function () {
               cards.forEach((card, index) => {
                 gsap.to(card, {
@@ -746,40 +742,60 @@
                 });
               });
             });
-
-            // Scroll buttons functionality remains intact
+      
             if (scrollLeftBtn && scrollRightBtn) {
               scrollLeftBtn.addEventListener('click', () => {
-                container.scrollBy({
-                  left: -scrollAmount,
-                  behavior: 'smooth'
-                });
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
               });
-
+      
               scrollRightBtn.addEventListener('click', () => {
-                container.scrollBy({
-                  left: scrollAmount,
-                  behavior: 'smooth'
-                });
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
               });
             }
-
-            // Enable horizontal scrolling with the mouse wheel, and disable/enable scrolling on hover
+      
+            // Function to check if user has reached the rightmost limit
+            function isAtRightmostLimit() {
+              return container.scrollLeft + container.clientWidth >= container.scrollWidth;
+            }
+      
+            // Enable horizontal scrolling but conditionally allow vertical scrolling
             container.addEventListener('wheel', (e) => {
-              e.preventDefault();
-              container.scrollLeft += e.deltaY;
+              if (!isAtRightmostLimit()) {
+                e.preventDefault();
+                e.stopPropagation();
+                container.scrollLeft += e.deltaY;
+              }
             });
-
+      
+            function disableVerticalScroll(e) {
+              if (!isAtRightmostLimit()) {
+                e.preventDefault();
+              }
+            }
+      
             container.addEventListener('mouseenter', () => {
-              disableScroll();
+              window.addEventListener('wheel', disableVerticalScroll, { passive: false });
             });
-
+      
             container.addEventListener('mouseleave', () => {
-              enableScroll();
+              window.removeEventListener('wheel', disableVerticalScroll);
+            });
+      
+            // Re-enable vertical scrolling only when reaching the rightmost limit
+            container.addEventListener('scroll', () => {
+              if (isAtRightmostLimit()) {
+                window.removeEventListener('wheel', disableVerticalScroll);
+              } else {
+                window.addEventListener('wheel', disableVerticalScroll, { passive: false });
+              }
             });
           });
         });
       </script>
+      
+      
+      
+      
 
     </section>
 
