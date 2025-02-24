@@ -270,7 +270,7 @@
           }
           .event-cards {
         gap: 1rem;
-        padding: 1rem;
+        padding: 15rem;
         padding-bottom: 3.2rem;
         padding-left: 1.5rem;
         overflow-y: hidden;
@@ -587,7 +587,7 @@
 
 
       <script>
-        document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.event-cards').forEach(container => {
     const cards = container.querySelectorAll('.event-card');
     const scrollLeftBtn = container.querySelector('.scroll-left');
@@ -631,20 +631,29 @@
       });
     });
 
-    // On container click, align horizontally with wider spacing
-    container.addEventListener('click', function () {
-      if (isFanned) {
-        cards.forEach((card, index) => {
-          gsap.to(card, {
-            x: index * 300, // Increased horizontal spacing
-            y: 0,
-            rotation: 0,
-            duration: 0.8,
-            ease: 'power3.inOut'
-          });
+    // Align horizontally when hovered
+    container.addEventListener('mouseenter', function () {
+      cards.forEach((card, index) => {
+        gsap.to(card, {
+          x: index * 300, // Increased horizontal spacing
+          y: 0,
+          rotation: 0,
+          duration: 0.8,
+          ease: 'power3.inOut'
         });
-        isFanned = false;
-      }
+      });
+    });
+
+    container.addEventListener('mouseleave', function () {
+      cards.forEach((card, index) => {
+        gsap.to(card, {
+          x: index * 5,
+          y: index * 5,
+          rotation: 0,
+          duration: 0.8,
+          ease: 'power3.inOut'
+        });
+      });
     });
 
     // Scroll buttons functionality remains intact
@@ -679,9 +688,7 @@
     });
   });
 });
-
-
-        </script>
+      </script>
         
     </section>
 
