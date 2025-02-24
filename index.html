@@ -212,6 +212,15 @@
     <!-- Event Cards Section -->
     <section class="events-container">
       <style>
+        @media (min-width: 768px) {
+            .events-container h2 {
+              display: none;
+            }
+
+            
+
+            
+        }
         .events-container {
           background-color: rgba(0, 0, 0, 0);
           padding: 2rem;
@@ -404,12 +413,38 @@
         .stop-scrolling {
           overflow: hidden;
         }
+
+        .title {
+          display: none; /* Hide by default */
+        }
+
+        @media (min-width: 768px) {
+            .title {
+            display: block;
+            z-index: 0;
+            color: #fa8d57;
+            font-size: clamp(30px, 5vw, 60px);
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            left: clamp(25%, 35%, 45%);
+            top: 50%;
+            transform: translate(0, -50%);
+            white-space: nowrap;
+            transition: transform 0.9s ease;
+            }
+
+            .event-cards:hover .title {
+              transform: translate(180%, -50%); /* Move title off-screen on hover */
+            }
+        }
       </style>
 
 
       <h2>TECHNICAL EVENTS</h2>
-      <button class="scroll-btn scroll-left" onclick="scrollLeft()"></button>
+   
       <div class="event-cards">
+        <p class="title">TECHNICAL EVENTS</p>
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
@@ -491,6 +526,7 @@
 
       <h2>NON-TECHNICAL EVENTS</h2>
       <div class="event-cards non-technical-events">
+        <p class="title">NON-TECHNICAL EVENTS</p>
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
@@ -554,6 +590,7 @@
 
       <h2>EVENTS FOR SCHOOL</h2>
       <div class="event-cards">
+        <p class="title">EVENTS FOR SCHOOL</p>
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
@@ -597,7 +634,7 @@
     // Ensure the container is relatively positioned so that the absolute positioning works
     container.style.position = 'relative';
     container.style.display = 'flex'; // Ensure horizontal alignment
-    container.style.gap = '20px'; // Add some spacing between stacks
+    container.style.gap = window.innerWidth <= 480 ? '5px' : '20px'; // Smaller gap on mobile
 
     // Initially stack all cards on top of each other with slight offset to show stack
     cards.forEach((card, index) => {
@@ -769,7 +806,21 @@
           }
         }
       </style>
+      
       <h1>Memories</h1>
+      <p class="scroll-text" id="scroll-text">Scroll to view more...</p>
+      <style>
+        .scroll-text {
+          text-align: center;
+          color: white;
+          opacity: 1;
+          transition: opacity 0.3s ease;
+        }
+        .scroll-text.hidden {
+          opacity: 0;
+        }
+      </style>
+      
       <div class="card">
         <div class="card-img"> <img src="./public/images/foss24.png" alt="" srcset=""></div>
         <div class="card-content">
