@@ -30,44 +30,45 @@
 
 <body>
   <div id="home"></div>
-  <div id="rotate-message" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 40px; width: 300px; height: 200px; border-radius: 10px; text-align: center; z-index: 9999;">
+  <div id="rotate-message"
+    style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: white; padding: 40px; width: 300px; height: 200px; border-radius: 10px; text-align: center; z-index: 9999;">
     <img src="./public/images/rotate.png" style="width: 68px; height: 80px; margin-bottom: 10px;">
     <p style="font-size: 13px;">Please rotate your device for <br> better experience</p>
   </div>
 
   <script>
-  window.addEventListener('load', function() {
-    const rotateMessage = document.getElementById('rotate-message');
-    let hasScrolled = false;
-    
-    function checkOrientation() {
-      if(!hasScrolled && window.innerHeight > window.innerWidth && window.matchMedia("(max-width: 920px)").matches) {
-      rotateMessage.style.display = 'block';
-      rotateMessage.style.opacity = '1';
-      rotateMessage.style.transition = 'opacity 0.5s ease';
-      } else {
-      rotateMessage.style.opacity = '0';
-      setTimeout(() => {
-        rotateMessage.style.display = 'none';
-      }, 500);
-      }
-    }
+    window.addEventListener('load', function () {
+      const rotateMessage = document.getElementById('rotate-message');
+      let hasScrolled = false;
 
-    // Hide message on scroll
-    window.addEventListener('scroll', function() {
-      if (!hasScrolled) {
-      hasScrolled = true;
-      rotateMessage.style.opacity = '0';
-      setTimeout(() => {
-        rotateMessage.style.display = 'none';
-      }, 500);
+      function checkOrientation() {
+        if (!hasScrolled && window.innerHeight > window.innerWidth && window.matchMedia("(max-width: 920px)").matches) {
+          rotateMessage.style.display = 'block';
+          rotateMessage.style.opacity = '1';
+          rotateMessage.style.transition = 'opacity 0.5s ease';
+        } else {
+          rotateMessage.style.opacity = '0';
+          setTimeout(() => {
+            rotateMessage.style.display = 'none';
+          }, 500);
+        }
       }
-    });
 
-    window.addEventListener('resize', checkOrientation);
-    checkOrientation();
+      // Hide message on scroll
+      window.addEventListener('scroll', function () {
+        if (!hasScrolled) {
+          hasScrolled = true;
+          rotateMessage.style.opacity = '0';
+          setTimeout(() => {
+            rotateMessage.style.display = 'none';
+          }, 500);
+        }
+      });
+
+      window.addEventListener('resize', checkOrientation);
+      checkOrientation();
     });
-    </script>
+  </script>
   <canvas class="webgl"></canvas>
 
   <div id="hero-backup">
@@ -92,12 +93,19 @@
 
     <h1 id="aboutMe">About</h1>
     <p>
-      This annual event has been a cornerstone in fostering a vibrant tech community, and this year promises to be
-      another chapter in our legacy. Techfoss serves as a dynamic platform where students, professionals, and tech
-      enthusiasts unite to explore the latest trends, participate in competitions, and engage in enriching workshops.
-      As we celebrate our 11th year, we invite you to join us in this journey of discovery and advancement.
+      Welcome to TECHFOSS 2025 – Where Future Meets Retro!
+
+      Step into a world where nostalgia meets next-gen tech! Inspired by the golden era of pixels, arcade vibes, and
+      classic innovation, TECHFOSS 2025 is your gateway to a one-day tech fest packed with mind-blowing ideas,
+      futuristic workshops, and electrifying competitions.
+
+      From AI breakthroughs to cyber escapades, we’re bringing together the brightest minds to push boundaries and
+      redefine tech—all with a vintage twist! Whether you’re here to code, create, compete, or just vibe with the
+      coolest tech geeks, TECHFOSS is where you belong.
+
+      So gear up, power on, and let’s make some history—retro style!
     </p>
-  
+
 
     <p>
       Below are details of Our Events
@@ -154,58 +162,62 @@
         max-width: 40px;
         padding-left: .5rem;
       }"> -->
-      <div class="logo-container">
-        <img src="./public/images/Logo detail.png" alt="Logo" class="responsive-img logo-left">
+    <div class="logo-container">
+      <img src="./public/images/Logo detail.png" alt="Logo" class="responsive-img logo-left">
 
-        <img src="./public/images/affli_and_accr.png" alt="Affiliations" class="responsive-img logo-left">
-        <img src="./public/images/cse .png" alt="CSE Logo" class="responsive-img logo-right">
-      </div>
-<style>
-  .logo-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 1rem;
-  }
+      <img src="./public/images/affli_and_accr.png" alt="Affiliations" class="responsive-img logo-left">
+      <img src="./public/images/cse .png" alt="CSE Logo" class="responsive-img logo-right">
+    </div>
+    <style>
+      .logo-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 1rem;
+      }
 
-  .responsive-img {
-    max-width: 25%;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin: 1rem;
-  }
+      .responsive-img {
+        max-width: 25%;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        margin: 1rem;
+      }
 
-  .logo-left {
-    padding-left: 3rem;
-  }
+      .logo-left {
+        padding-left: 3rem;
+      }
 
-  .logo-right {
-    padding-right: 3rem;
-  }
+      .logo-right {
+        padding-right: 3rem;
+      }
 
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .responsive-img {
-              max-width: 325px;
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .responsive-img {
+          max-width: 325px;
 
-    }
-    .logo-left, .logo-right {
-      padding: 0 1rem;
-    }
-  }
+        }
 
-  @media (max-width: 480px) {
-    .responsive-img {
-              max-width: 325px;
+        .logo-left,
+        .logo-right {
+          padding: 0 1rem;
+        }
+      }
 
-    }
-    .logo-left, .logo-right {
-      padding: 0 0.5rem;
-    }
-  }
-</style>
+      @media (max-width: 480px) {
+        .responsive-img {
+          max-width: 325px;
+
+        }
+
+        .logo-left,
+        .logo-right {
+          padding: 0 0.5rem;
+        }
+      }
+    </style>
 
     </section>
 
@@ -213,14 +225,15 @@
     <section class="events-container">
       <style>
         @media (min-width: 768px) {
-            .events-container h2 {
-              display: none;
-            }
+          .events-container h2 {
+            display: none;
+          }
 
-            
 
-            
+
+
         }
+
         .events-container {
           background-color: rgba(0, 0, 0, 0);
           padding: 2rem;
@@ -231,20 +244,20 @@
         }
 
         .event-cards {
-        display: flex;
-        gap: 2rem;
-        background-color: #ee6633;
-        border-radius: 18px;
-        padding: 22rem;
-        padding-bottom: 4rem;
-        overflow-x: auto;
-        scromargin-top: 0.5rem;
-        ll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        position: relative;
-        margin-bottom: 2.5rem;
+          display: flex;
+          gap: 2rem;
+          background-color: #ee6633;
+          border-radius: 18px;
+          padding: 22rem;
+          padding-bottom: 4rem;
+          overflow-x: auto;
+          scromargin-top: 0.5rem;
+          ll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          position: relative;
+          margin-bottom: 2.5rem;
         }
 
         .event-cards::-webkit-scrollbar {
@@ -263,26 +276,28 @@
         /* New responsive styles */
         @media (max-width: 768px) {
           .event-card {
-        min-width: 200px;
-        height: 320px;
+            min-width: 200px;
+            height: 320px;
           }
         }
 
         @media (max-width: 480px) {
           .event-card {
-        min-width: 160px;
-        height: 260px;
-        padding-left: 20px;
+            min-width: 160px;
+            height: 260px;
+            padding-left: 20px;
           }
+
           .events-container {
-        padding: 1rem;
+            padding: 1rem;
           }
+
           .event-cards {
-        gap: 1rem;
-        padding: 15rem;
-        padding-bottom: 3.2rem;
-        padding-left: 1.5rem;
-        overflow-y: hidden;
+            gap: 1rem;
+            padding: 15rem;
+            padding-bottom: 3.2rem;
+            padding-left: 1.5rem;
+            overflow-y: hidden;
 
           }
         }
@@ -363,13 +378,13 @@
         /* Responsive image sizes */
         @media (max-width: 768px) {
           .event-image {
-        height: 80%;
+            height: 80%;
           }
         }
 
         @media (max-width: 480px) {
           .event-image {
-        height: 70%;
+            height: 70%;
           }
         }
 
@@ -384,9 +399,9 @@
 
         @media (max-width: 480px) {
           .event-type {
-        padding: 0.3rem 0.6rem;
-        letter-spacing: 2px;
-        font-size: 0.8em;
+            padding: 0.3rem 0.6rem;
+            letter-spacing: 2px;
+            font-size: 0.8em;
           }
         }
 
@@ -415,11 +430,12 @@
         }
 
         .title {
-          display: none; /* Hide by default */
+          display: none;
+          /* Hide by default */
         }
 
         @media (min-width: 768px) {
-            .title {
+          .title {
             display: block;
             z-index: 0;
             color: #fa8d57;
@@ -432,29 +448,29 @@
             transform: translate(0, -50%);
             white-space: nowrap;
             transition: transform 0.9s ease;
-            }
+          }
 
-            .event-cards:hover .title {
-              transform: translate(180%, -50%); /* Move title off-screen on hover */
-            }
+          .event-cards:hover .title {
+            transform: translate(180%, -50%);
+            /* Move title off-screen on hover */
+          }
         }
       </style>
 
 
       <h2>TECHNICAL EVENTS</h2>
-   
+
       <div class="event-cards">
         <p class="title">TECHNICAL EVENTS</p>
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="./public/images/Events/game_dev.jpeg" alt="GAME DEV IMG"
-                class="event-image">
+              <img src="./public/images/Events/game_dev.jpeg" alt="GAME DEV IMG" class="event-image">
               <div class="event-type">WORKSHOP</div>
             </div>
             <div class="card-back">
               <h3>GAME DEVELOPMENT</h3>
-              <a href="https://bit.ly/ethicalhacking_TF" target="_blank">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMyDSWC144D9mgSvYaK7Ep3ClNeTA_0u8HkVbUTan8UGkhdg/viewform" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -465,13 +481,13 @@
           <div class="card-inner">
             <div class="card-front">
               <img
-                src="https://b2454586.smushcdn.com/2454586/wp-content/uploads/2024/05/RAG-Agent.png?lossy=1&strip=1&webp=1" style="object-fit: fill;"
-                alt="RAG AGENT IMG" class="event-image">
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fshelf.io%2Fwp-content%2Fuploads%2F2024%2F01%2FThe-Evolution-of-AI-Introducing-Autonomous-AI-Agents-_3.jpg&f=1&nofb=1&ipt=f5a0457710031d4aaf02d41e2952f3634cca4c36ef78d90c49da3a840e917878&ipo=images"
+                style="object-fit: cover;" alt="RAG AGENT IMG" class="event-image">
               <div class="event-type">WORKSHOP</div>
             </div>
             <div class="card-back">
-              <h3>RAG AGENT</h3>
-              <a href="https://bit.ly/airtable_TF" target="_blank">
+              <h3>AI & AGENT</h3>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMyDSWC144D9mgSvYaK7Ep3ClNeTA_0u8HkVbUTan8UGkhdg/viewform" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -481,12 +497,13 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://i.pinimg.com/736x/96/91/22/969122617496f1114ba5f77c490a43e5.jpg" alt="LLM TALK IMG" class="event-image">
+              <img src="https://i.pinimg.com/736x/96/91/22/969122617496f1114ba5f77c490a43e5.jpg" alt="LLM TALK IMG"
+                class="event-image">
               <div class="event-type">TALK SESSION </div>
             </div>
             <div class="card-back">
               <h3>LLM</h3>
-              <a href="https://forms.gle/XX3dvrX4qPxnTXC3A" target="_blank">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMyDSWC144D9mgSvYaK7Ep3ClNeTA_0u8HkVbUTan8UGkhdg/viewform" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -495,12 +512,13 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://i.pinimg.com/736x/d0/82/95/d082951b066932ba1e5b30dce1bf48cb.jpg" alt="CTF IMG" class="event-image">
+              <img src="https://i.pinimg.com/736x/d0/82/95/d082951b066932ba1e5b30dce1bf48cb.jpg" alt="CTF IMG"
+                class="event-image">
               <div class="event-type">COMPETITION</div>
             </div>
             <div class="card-back">
               <h3>CAPTURE THE FLAG - CODE DEBUGGING</h3>
-              <a href="https://forms.gle/XX3dvrX4qPxnTXC3A" target="_blank">
+              <a href="https://forms.gle/Q8HV6wUBfPnEatkH7" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -509,12 +527,14 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://th.bing.com/th/id/OIP.qxMA-UbieX8B4MipcGZ-xgHaCJ?w=296&h=101&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="BINARY BOUNTY IMG" class="event-image" style="object-fit: none;">
+              <img
+                src="https://th.bing.com/th/id/OIP.qxMA-UbieX8B4MipcGZ-xgHaCJ?w=296&h=101&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="BINARY BOUNTY IMG" class="event-image" style="object-fit: none;">
               <div class="event-type">COMPETITION</div>
             </div>
             <div class="card-back">
               <h3>BINARY BOUNTY</h3>
-              <a href="https://forms.gle/XX3dvrX4qPxnTXC3A" target="_blank">
+              <a href="https://forms.gle/Q8HV6wUBfPnEatkH7" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -522,35 +542,22 @@
         </div>
 
       </div>
-     
+
 
       <h2>NON-TECHNICAL EVENTS</h2>
       <div class="event-cards non-technical-events">
         <p class="title">NON-TECHNICAL EVENTS</p>
-        <div class="event-card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="https://i.pinimg.com/736x/19/6d/06/196d06f6d8cf6d0328e7b2227bb4cd57.jpg" alt="GAME DEV IMG" class="event-image">
-              <div class="event-type">PAINT BALL</div>
-            </div>
-            <div class="card-back">
-              <h3>GAME</h3>
-              <a href="https://bit.ly/ethicalhacking_TF" target="_blank">
-                <button class="register-btn">REGISTER</button>
-              </a>
-            </div>
-          </div>
-        </div>
 
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://i.pinimg.com/736x/d2/cd/03/d2cd03ec207e42518cc7ee1476a123fe.jpg" alt="RAG AGENT IMG" class="event-image">
+              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.8DIkfAqrLApv8WW4J6ijYgHaIb%26pid%3DApi&f=1&ipt=edf391f344a496a6e3fb0ea60d75143ce735c8728084b26dcba94a1fb1694452&ipo=images" alt="COD"
+                class="event-image">
               <div class="event-type">ESPORTS</div>
             </div>
             <div class="card-back">
-              <h3>1 V 1 </h3>
-              <a href="https://bit.ly/airtable_TF" target="_blank">
+              <h3>COD </h3>
+              <a href="https://forms.gle/NMfsL1E85guiePCG9" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -560,13 +567,45 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://i.pinimg.com/736x/bd/13/d8/bd13d83bead308206ca70ccac80cb9bb.jpg" alt="LLM TALK IMG" class="event-image">
-              <div class="event-type">5'S FOOTBALL </div>
+              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.mFOGuaOJbris0lAGcthGqwHaHa%26pid%3DApi&f=1&ipt=9804274989a0d0b11b7791dacf89269febe572bd414adc615f1503eb859cb410&ipo=images" alt="Mini Miltia"
+                class="event-image">
+              <div class="event-type">ESPORTS</div>
             </div>
             <div class="card-back">
-              <h3>FOOTBALL</h3>
-              <a href="https://forms.gle/XX3dvrX4qPxnTXC3A" target="_blank">
+              <h3>Mini Miltia </h3>
+              <a href="https://forms.gle/5CHVnGV7Hh6xZxd29" target="_blank">
                 <button class="register-btn">REGISTER</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.dv7rZV6Rqg0UTWH0csfdtAHaHa%26pid%3DApi&f=1&ipt=65471699bcc446dd2354c01365cb0836212a26c94ceb111c0095a1f65b614c18&ipo=images" alt="RAG AGENT IMG"
+                class="event-image">
+              <div class="event-type">ESPORTS</div>
+            </div>
+            <div class="card-back">
+              <h3>Free Fire </h3>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0OpQbMUvw9R40i2Od-SfleOHIU5aX-qEG8LLMt0EC6dU6sg/viewform?usp=dialog" target="_blank">
+                <button class="register-btn">REGISTER</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="https://files.oaiusercontent.com/file-QcBVZpAw2u8kABwzB1XkLC?se=2025-02-24T13%3A29%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8b2acce6-0690-4101-83de-8a473611dc19.webp&sig=DkGxxZxOievRZJ7rrco/cjd4rLpJnGdZtZhc8tBmxnU%3D" alt="CARNIVAL"
+                class="event-image">
+              <div class="event-type"> CARNIVAL </div>
+            </div>
+            <div class="card-back">
+              <h3>CARNIVAL</h3>
+                <button class="register-btn">SPOT REGISTER</button>
               </a>
             </div>
           </div>
@@ -574,7 +613,8 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://i.pinimg.com/736x/8b/13/26/8b13262a003b8fc83732f973b865b23e.jpg" alt="CTF IMG" class="event-image">
+              <img src="https://i.pinimg.com/736x/8b/13/26/8b13262a003b8fc83732f973b865b23e.jpg" alt="CTF IMG"
+                class="event-image">
               <div class="event-type">GAMING ROOM</div>
             </div>
             <div class="card-back">
@@ -584,8 +624,8 @@
             </div>
           </div>
         </div>
-        
-        
+
+
       </div>
 
       <h2>EVENTS FOR SCHOOL</h2>
@@ -594,12 +634,14 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://th.bing.com/th?id=OSK.HEROj7-EHO8wtyODDpA5d9n18O_q4eiJX35HvnI70PJub-A&w=472&h=280&c=13&rs=2&o=6&dpr=1.3&pid=SANGAM" alt="GAME DEV IMG" class="event-image" style="object-fit: fill;">
+              <img
+                src="https://th.bing.com/th?id=OSK.HEROj7-EHO8wtyODDpA5d9n18O_q4eiJX35HvnI70PJub-A&w=472&h=280&c=13&rs=2&o=6&dpr=1.3&pid=SANGAM"
+                alt="GAME DEV IMG" class="event-image" style="object-fit: fill;">
               <div class="event-type">BLENDER WORKSHOP</div>
             </div>
             <div class="card-back">
               <h3>WORKSHOP</h3>
-              <a href="#" target="_blank">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfu_zeWnPWUG7fgMWQ-8RaF0Vr-6jjUPFUD7BFGl2El0e-PIQ/viewform" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -609,12 +651,14 @@
         <div class="event-card">
           <div class="card-inner">
             <div class="card-front">
-              <img src="https://i0.wp.com/kimillustration.com/wp-content/uploads/2019/08/ScottBros_BigPlans01-copy.jpg?w=720" alt="RAG AGENT IMG" class="event-image">
+              <img
+                src="https://i0.wp.com/kimillustration.com/wp-content/uploads/2019/08/ScottBros_BigPlans01-copy.jpg?w=720"
+                alt="RAG AGENT IMG" class="event-image">
               <div class="event-type">IDEATHON COMPETITION</div>
             </div>
             <div class="card-back">
               <h3>IDEATHON</h3>
-              <a href="https://bit.ly/airtable_TF" target="_blank">
+              <a href="https://forms.gle/7uyejY4xzxQRcHvE8" target="_blank">
                 <button class="register-btn">REGISTER</button>
               </a>
             </div>
@@ -624,109 +668,109 @@
 
 
       <script>
-                document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.event-cards').forEach(container => {
-    const cards = container.querySelectorAll('.event-card');
-    const scrollLeftBtn = container.querySelector('.scroll-left');
-    const scrollRightBtn = container.querySelector('.scroll-right');
-    const scrollAmount = 400;
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelectorAll('.event-cards').forEach(container => {
+            const cards = container.querySelectorAll('.event-card');
+            const scrollLeftBtn = container.querySelector('.scroll-left');
+            const scrollRightBtn = container.querySelector('.scroll-right');
+            const scrollAmount = 400;
 
-    // Ensure the container is relatively positioned so that the absolute positioning works
-    container.style.position = 'relative';
-    container.style.display = 'flex'; // Ensure horizontal alignment
-    container.style.gap = window.innerWidth <= 480 ? '5px' : '20px'; // Smaller gap on mobile
+            // Ensure the container is relatively positioned so that the absolute positioning works
+            container.style.position = 'relative';
+            container.style.display = 'flex'; // Ensure horizontal alignment
+            container.style.gap = window.innerWidth <= 480 ? '5px' : '20px'; // Smaller gap on mobile
 
-    // Initially stack all cards on top of each other with slight offset to show stack
-    cards.forEach((card, index) => {
-      card.style.position = 'absolute';
-      card.style.top = `${index * 5}px`; // Slight vertical offset to show stack
-      card.style.left = `${index * 5}px`; // Slight horizontal offset to show stack
-      card.style.zIndex = cards.length - index;
-    });
+            // Initially stack all cards on top of each other with slight offset to show stack
+            cards.forEach((card, index) => {
+              card.style.position = 'absolute';
+              card.style.top = `${index * 5}px`; // Slight vertical offset to show stack
+              card.style.left = `${index * 5}px`; // Slight horizontal offset to show stack
+              card.style.zIndex = cards.length - index;
+            });
 
-    let isFanned = true;
+            let isFanned = true;
 
-    // On click, fan out cards to show stack and allow individual card clicks
-    cards.forEach((card, index) => {
-      card.addEventListener('click', function (event) {
-        event.stopPropagation(); // Prevent container click event from firing
+            // On click, fan out cards to show stack and allow individual card clicks
+            cards.forEach((card, index) => {
+              card.addEventListener('click', function (event) {
+                event.stopPropagation(); // Prevent container click event from firing
 
-        if (!isFanned) {
-          cards.forEach((card, idx) => {
-            gsap.to(card, {
-              x: idx * 50,
-              y: idx * 30,
-              rotation: idx * 5,
-              duration: 0.8,
-              ease: 'power3.out'
+                if (!isFanned) {
+                  cards.forEach((card, idx) => {
+                    gsap.to(card, {
+                      x: idx * 50,
+                      y: idx * 30,
+                      rotation: idx * 5,
+                      duration: 0.8,
+                      ease: 'power3.out'
+                    });
+                  });
+                  isFanned = true;
+                } else {
+                  console.log(`Card ${index + 1} clicked`); // Placeholder for individual card action
+                }
+              });
+            });
+
+            // Align horizontally when hovered
+            container.addEventListener('mouseenter', function () {
+              cards.forEach((card, index) => {
+                gsap.to(card, {
+                  x: index * 300, // Increased horizontal spacing
+                  y: 0,
+                  rotation: 0,
+                  duration: 0.8,
+                  ease: 'power3.inOut'
+                });
+              });
+            });
+
+            container.addEventListener('mouseleave', function () {
+              cards.forEach((card, index) => {
+                gsap.to(card, {
+                  x: index * 5,
+                  y: index * 5,
+                  rotation: 0,
+                  duration: 0.8,
+                  ease: 'power3.inOut'
+                });
+              });
+            });
+
+            // Scroll buttons functionality remains intact
+            if (scrollLeftBtn && scrollRightBtn) {
+              scrollLeftBtn.addEventListener('click', () => {
+                container.scrollBy({
+                  left: -scrollAmount,
+                  behavior: 'smooth'
+                });
+              });
+
+              scrollRightBtn.addEventListener('click', () => {
+                container.scrollBy({
+                  left: scrollAmount,
+                  behavior: 'smooth'
+                });
+              });
+            }
+
+            // Enable horizontal scrolling with the mouse wheel, and disable/enable scrolling on hover
+            container.addEventListener('wheel', (e) => {
+              e.preventDefault();
+              container.scrollLeft += e.deltaY;
+            });
+
+            container.addEventListener('mouseenter', () => {
+              disableScroll();
+            });
+
+            container.addEventListener('mouseleave', () => {
+              enableScroll();
             });
           });
-          isFanned = true;
-        } else {
-          console.log(`Card ${index + 1} clicked`); // Placeholder for individual card action
-        }
-      });
-    });
-
-    // Align horizontally when hovered
-    container.addEventListener('mouseenter', function () {
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          x: index * 300, // Increased horizontal spacing
-          y: 0,
-          rotation: 0,
-          duration: 0.8,
-          ease: 'power3.inOut'
         });
-      });
-    });
-
-    container.addEventListener('mouseleave', function () {
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          x: index * 5,
-          y: index * 5,
-          rotation: 0,
-          duration: 0.8,
-          ease: 'power3.inOut'
-        });
-      });
-    });
-
-    // Scroll buttons functionality remains intact
-    if (scrollLeftBtn && scrollRightBtn) {
-      scrollLeftBtn.addEventListener('click', () => {
-        container.scrollBy({
-          left: -scrollAmount,
-          behavior: 'smooth'
-        });
-      });
-
-      scrollRightBtn.addEventListener('click', () => {
-        container.scrollBy({
-          left: scrollAmount,
-          behavior: 'smooth'
-        });
-      });
-    }
-
-    // Enable horizontal scrolling with the mouse wheel, and disable/enable scrolling on hover
-    container.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      container.scrollLeft += e.deltaY;
-    });
-
-    container.addEventListener('mouseenter', () => {
-      disableScroll();
-    });
-
-    container.addEventListener('mouseleave', () => {
-      enableScroll();
-    });
-  });
-});
       </script>
-        
+
     </section>
 
     <!-- Memeories section -->
@@ -739,7 +783,7 @@
         }
 
         .sticky-cards {
-          background-color:transparent;
+          background-color: transparent;
           height: 100vh;
           overflow: hidden;
           margin-top: 100px;
@@ -784,29 +828,30 @@
 
         @media(max-width:900px) {
           .card {
-        width: 60%;
-        height: 40%;
-        left: 30%;
+            width: 60%;
+            height: 40%;
+            left: 30%;
           }
         }
 
         @media(max-width:480px) {
           .card {
-        width: 50%;
-        height: 35%;
-        left: 45%;
+            width: 50%;
+            height: 35%;
+            left: 45%;
           }
         }
 
         /* Added landscape mode styles */
         @media screen and (orientation: landscape) {
           .card {
-        height: 70%; /* Increased height in landscape */
-        left: 45%;
+            height: 70%;
+            /* Increased height in landscape */
+            left: 45%;
           }
         }
       </style>
-      
+
       <h1>Memories</h1>
       <p class="scroll-text" id="scroll-text">Scroll to view more...</p>
       <style>
@@ -816,11 +861,12 @@
           opacity: 1;
           transition: opacity 0.3s ease;
         }
+
         .scroll-text.hidden {
           opacity: 0;
         }
       </style>
-      
+
       <div class="card">
         <div class="card-img"> <img src="./public/images/foss24.png" alt="" srcset=""></div>
         <div class="card-content">
@@ -952,41 +998,41 @@
 
     <!-- Sponser Section -->
     <style>
-  .sponsors_img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+      .sponsors_img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
 
-  .sponsors_img img {
-    width: 190px;
-    height: 165px;
-    object-fit: contain;
-  }
+      .sponsors_img img {
+        width: 190px;
+        height: 165px;
+        object-fit: contain;
+      }
 
-  @media (max-width: 768px) {
-    .sponsors_img img {
-      width: 150px;
-      height: 130px;
-    }
-  }
+      @media (max-width: 768px) {
+        .sponsors_img img {
+          width: 150px;
+          height: 130px;
+        }
+      }
 
-  @media (max-width: 480px) {
-    .sponsors_img img {
-      width: 100px;
-      height: 90px;
-    }
-  }
-</style>
-<h2>OUR SPONSORS</h2>
-<br>
-<div class="sponsors_img">
-  <img src="./assets/luminar.png" alt="Luminar Logo">
-  <img src="./assets/al_taza.png" alt="Al Taza Logo" style="width: 118px;">
-</div>
-  
+      @media (max-width: 480px) {
+        .sponsors_img img {
+          width: 100px;
+          height: 90px;
+        }
+      }
+    </style>
+    <h2>OUR SPONSORS</h2>
+    <br>
+    <div class="sponsors_img">
+      <img src="./assets/luminar.png" alt="Luminar Logo">
+      <img src="./assets/al_taza.png" alt="Al Taza Logo" style="width: 118px;">
+    </div>
+
   </main>
 
   <input type="text" id="textarea" readonly />
