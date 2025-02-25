@@ -69,6 +69,60 @@
       checkOrientation();
     });
   </script>
+
+  <script>
+    const scrollButton = document.createElement("div");
+scrollButton.innerHTML = "&#8595;"; // Down arrow symbol
+scrollButton.style.position = "fixed";
+scrollButton.style.bottom = "20px";
+scrollButton.style.left = "50%";
+scrollButton.style.transform = "translateX(-50%)";
+scrollButton.style.width = "50px";
+scrollButton.style.height = "50px";
+scrollButton.style.background = "rgba(0, 0, 0, 0.7)";
+scrollButton.style.color = "white";
+scrollButton.style.display = "flex";
+scrollButton.style.alignItems = "center";
+scrollButton.style.justifyContent = "center";
+scrollButton.style.borderRadius = "50%";
+scrollButton.style.cursor = "pointer";
+scrollButton.style.transition = "opacity 0.5s ease, transform 0.3s ease-in-out";
+scrollButton.style.zIndex = "10";
+scrollButton.style.fontSize = "24px";
+scrollButton.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+scrollButton.classList.add("bounce");
+
+document.body.appendChild(scrollButton);
+
+// Scroll animation
+scrollButton.addEventListener("click", () => {
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+});
+
+// Hide button on scroll
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        scrollButton.style.opacity = "0";
+        scrollButton.style.pointerEvents = "none";
+    } else {
+        scrollButton.style.opacity = "1";
+        scrollButton.style.pointerEvents = "auto";
+    }
+});
+
+// Adding bounce animation
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.bounce {
+    animation: bounce 1.5s infinite ease-in-out;
+}`;
+document.head.appendChild(style);
+
+  </script>
   <canvas class="webgl"></canvas>
 
   <div id="hero-backup">
